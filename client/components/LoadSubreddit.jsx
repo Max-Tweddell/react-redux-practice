@@ -2,10 +2,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchPosts} from '../actions'
 
-let LoadSubreddit = ({dispatch}) => (
-  <button
-    onClick={() => dispatch(fetchPosts('newzealand'))}
+const LoadSubreddit = ({dispatch, subreddit}) => {
+  console.log()
+  return (<button
+    onClick={() => dispatch(fetchPosts(subreddit))}
     >Fetch Posts</button>
-)
-
-export default connect()(LoadSubreddit)
+  )
+}
+function mapStateToProps (state) {
+  return {
+    subreddit: state.subreddit
+  }
+}
+export default connect(mapStateToProps)(LoadSubreddit)
